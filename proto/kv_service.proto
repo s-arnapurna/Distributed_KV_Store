@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package kvstore;
+
+option cc_generic_services = true;
+
+// This message is what gets serialized and sent through the Raft log.
+// It represents a single write operation.
+message KvCommand {
+    string key = 1;
+    string value = 2;
+    // We can add an 'op_type' field here later for DELETE operations
+}
+
+// The request for a GET operation (read-only)
+message GetRequest {
+    string key = 1;
+}
+
+// The response for a GET operation
+message GetResponse {
+    bool success = 1;
+    string value = 2;
+}
+
+// The response for a PUT operation (write)
+message PutResponse {
+    bool success = 1;
+}
+
+// The client-facing RPC service definition
+service KvService {
+    rpc get(GetRequest) returns (GetResponse);
+    rpc put(KvCommand) returns (PutResponse);
+}

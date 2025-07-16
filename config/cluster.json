@@ -1,0 +1,7 @@
+{
+  "peers": [
+    { "id": 1, "raftAddress": "127.0.0.1:8101", "apiAddress": "127.0.0.1:9001" },
+    { "id": 2, "raftAddress": "127.0.0.1:8102", "apiAddress": "127.0.0.1:9002" },
+    { "id": 3, "raftAddress": "127.0.0.1:8103", "apiAddress": "127.0.0.1:9003" }
+  ]
+}
